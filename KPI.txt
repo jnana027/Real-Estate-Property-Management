@@ -1,0 +1,25 @@
+KPI:
+1.Total Bedrooms:
+Total Properties = COUNTROWS(FactTable)
+
+2.Total Waterfront yes:
+Waterfront yes = CALCULATE([Total Properties],FactTable[Waterfront ID]=1)
+
+3.Total Waterfront No:
+Waterfront No = CALCULATE([Total Properties],Dim_waterfront[Waterfront Status]="No")
+
+4.Total % Waterfront yes :
+ % Waterfront Yes = DIVIDE([Waterfront yes],[Total Properties],0)
+
+5.Total % Waterfront No :
+% Waterfront No = DIVIDE([Waterfront No],[Total Properties],0)
+
+6.Total Renovated:
+Renovated = CALCULATE([Total Properties],Dim_renovation_status[Renovation Status]="Renovated")
+
+7.Total NotRenovated:
+Renovated = CALCULATE([Total Properties],Dim_renovation_status[Renovation Status]="Notrenovated")
+
+8.% Renovated = DIVIDE([Renovated],[Total Properties],0)
+
+9.% Notrenovated = DIVIDE([Not Renovated],[Total Properties],0)

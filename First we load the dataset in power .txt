@@ -1,0 +1,30 @@
+First, we load the dataset into Power BI using the 'Get Data' option. After that, we transform the data in Power Query. In Power Query, we remove unwanted columns from the dataset using the 'Remove Column' option and add new columns using the 'Column from Example' feature in the 'Add Column' option.
+
+We removed the 'Zipcode,' 'lat,' 'long,' 'Sqft_living15,' 'Sqft_lot15,' 'grade,' 'sqft_above,' 'sqft_basement,' 'view,' 'sqft_living,' 'sqft_lot,' and 'id' columns from the dataset because they were unwanted.
+Then we add new column
+1.We added a new column named 'Bedrooms' using the 'Bedroom' column as an example in the 'Add Column' option. Afterward, we removed the 'Bedroom' column.
+2.We added a new column named 'Floors' using the 'Floor' column as an example in the 'Add Column' option. Afterward, we removed the 'Floor' column.
+3.We added a new column named 'Waterfront status' using the 'Waterfront' column as a condition in the 'Add Column' option. The condition was set as follows: if 'Waterfront' is equal to 1, then the value is 'Yes'; otherwise, it is 'No'.
+4.We added a new column named 'Condition Status' using the 'Condition' column as a condition in the 'Add Column' option. The condition was defined as follows: if 'Condition' is equal to 1, then the value is 'Very good'; if 'Condition' is equal to 2, the value is 'Good'; otherwise, it is 'Bad.' After that, we removed the 'Condition' column from the dataset.
+5.We added a new column called 'Interval' using the 'Yr_built' and 'Yr_renovated' columns with the help of the 'Custom Column' option in the 'Add Column' menu. In this custom column, we calculated the interval by subtracting 'Yr_built' from 'Yr_renovated'.
+6.We added a new column named 'Renovation Status' using the 'Interval' column with the help of the 'Add Conditional Column' option in the 'Add Column' menu. The condition we specified was as follows: if the 'Interval' is greater than 0, then the value is 'Renovated'; otherwise, it is 'Not renovated.
+We used the 'Detect Data Type' option to check the data type of each column. Afterward, we changed the table name from 'Kc_house_data' to 'FactTable.
+
+We duplicated the 'FactTable' table using the 'Duplicate' option and named it 'Dim_location.' In the 'Dim_location' table, we removed all other columns except the 'Property location' column. Using the 'Remove Duplicate' option, we eliminated duplicate values in the 'Property location' column. Finally, we added a new column named 'Location ID' to the 'Dim_location' table with the help of the 'Index Column' feature in the 'Add Column' menu.
+
+We duplicated the 'FactTable' table using the 'Duplicate' option and named it 'Dim_Bedrooms.' In the 'Dim_Bedrooms' table, we removed all other columns except the 'Property Bedrooms' column. Using the 'Remove Duplicate' option, we eliminated duplicate values in the 'Property Bedrooms' column. Finally, we added a new column named 'Bedrooms ID' to the 'Dim_Bedrooms' table with the help of the 'Index Column' feature in the 'Add Column' menu.
+
+We duplicated the 'FactTable' table using the 'Duplicate' option and named it 'Dim_Floors.' In the 'Dim_Floors' table, we removed all other columns except the 'Floors' column. Using the 'Remove Duplicate' option, we eliminated duplicate values in the 'Floors' column. Finally, we added a new column named 'Floors ID' to the 'Dim_Floors' table with the help of the 'Index Column' feature in the 'Add Column' menu.
+
+We duplicated the 'FactTable' table using the 'Duplicate' option and named it 'Dim_waterfront.' In the 'Dim_waterfront' table, we removed all other columns except the 'Waterfront status' column. Using the 'Remove Duplicate' option, we eliminated duplicate values in the 'Waterfront status' column. Finally, we added a new column named 'Waterfront ID' to the 'Dim_waterfront' table with the help of the 'Index Column' feature in the 'Add Column' menu.
+
+We duplicated the 'FactTable' table using the 'Duplicate' option and named it 'Dim_Conditional_Status.' In the 'Dim_Conditional_Status' table, we removed all other columns except the 'Conditional_Status' column. Using the 'Remove Duplicate' option, we eliminated duplicate values in the 'Conditional_Status' column. Finally, we added a new column named 'Conditional_Status ID' to the 'Dim_Conditional_Status' table with the help of the 'Index Column' feature in the 'Add Column' menu.
+
+We duplicated the 'FactTable' table using the 'Duplicate' option and named it 'Dim_Renovation_Status.' In the 'Dim_Renovation_Status' table, we removed all other columns except the 'Renovation_Status' column. Using the 'Remove Duplicate' option, we eliminated duplicate values in the 'Renovation_Status' column. Finally, we added a new column named 'Renovation_Status ID' to the 'Dim_Renovation_Status' table with the help of the 'Index Column' feature in the 'Add Column' menu.
+
+
+We used the 'Merge Queries' option to join the 'FactTable' table with 'Dim_location,' 'Dim_Bedrooms,' 'Dim_Floors,' 'Dim_WaterFront,' 'Dim_Conditional_Status,' and 'Dim_Renovation_Status'.
+
+We removed the 'Property location,' 'Bedrooms,' 'Floors,' 'Waterfront_status,' 'Conditional_Status,' and 'Renovation_Status' columns from the 'FactTable.
+
+ 
